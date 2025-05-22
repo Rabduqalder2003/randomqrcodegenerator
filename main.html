@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Random QR Code Generator</title>
+    <link rel="shortcut icon" href="/images/favicon.ico">
+    <style>
+        h1 {text-align: center;
+        color: white}
+        p {
+            text-align: center;
+            color: white;
+        }
+        button {
+            display: block;
+            margin: 20px auto;
+        }
+        #qrcode {
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body style="background-color: rgb(56, 56, 56);">
+    <h1>Random QR Code Generator</h1>
+    <button onclick="generateQRCode()">Generate</button>
+    <img id="qrcode" src="" alt="QR Code" />
+    <p>This website isn't finished yet, so for now, the QR code will only generate gibberish.</p>
+
+    <script>
+        function generateQRCode() {
+            const randomText = Math.random().toString(36).substring(2, 10);
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(randomText)}&size=200x200`;
+            document.getElementById("qrcode").src = qrUrl;
+        }
+    </script>
+</body>
+</html>
